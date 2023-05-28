@@ -1,0 +1,7 @@
+name: check_copied_files
+channels:
+  - anaconda
+dependencies:
+  - python=3
+  - glob2
+  - tqdm
