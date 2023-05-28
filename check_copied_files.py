@@ -114,12 +114,12 @@ def main():
 
     # All files in the source directory that match the filter and are not 
     # checksum files are identified
-    source_files = [f for f in glob.glob(os.path.join(args.source, 
-                                                      '**', 
-                                                      args.filter), 
-                                         recursive=True) 
-                    if os.path.isfile(f) and not f.endswith(args.extension)]
-
+    source_files = []
+    for dirpath, dirnames, filenames in os.walk(args.source):
+        for filename in filenames:
+            if not filename.endswith(args.extension):
+                source_files.append(os.path.join(dirpath, filename))
+    
     # For each file in the source directory...
     for file_path in tqdm(source_files, desc="Processing files", unit="file"):
         relative_path = os.path.relpath(file_path, args.source)
