@@ -15,22 +15,23 @@ This Python command-line tool generates checksums for files in a source director
 To use the tool, run the following command in your terminal:
 
 ```
-python check_copied_files.py -s <source_directory> [-d <destination_directory>] [-f <filter>] [-e <checksum_extension>] [-a <algorithm>]
+python check_copied_files.py -s SOURCE [-d DESTINATION] [-f FILTER] [-e EXTENSION] [-a ALGORITHM] [-c]
 ```
 
 or
 
 ```
-./check_copied_files.py -s <source_directory> [-d <destination_directory>] [-f <filter>] [-e <checksum_extension>] [-a <algorithm>]
+./check_copied_files.py -s SOURCE [-d DESTINATION] [-f FILTER] [-e EXTENSION] [-a ALGORITHM] [-c]
 ```
 
-Replace `<source_directory>` with the path to the source directory, and replace any optional arguments in square brackets as needed. Here are the details for each argument:
+Replace `SOURCE` with the path to the source directory, and replace any optional arguments in square brackets as needed. Here are the details for each argument:
 
-- `-s, --source`: (Required) Path to the source directory.
-- `-d, --destination`: (Optional) Path to the destination directory. If not provided, the tool only generates checksums without checking any files.
-- `-f, --filter`: (Optional) File name filter. By default, all files are processed. Checksum files are always excluded.
-- `-e, --extension`: (Optional) Extension for the checksum files. By default, the extension is "checksum".
-- `-a, --algorithm`: (Optional) Checksum algorithm to use. By default, the MD5 algorithm is used. You can specify any algorithm guaranteed to be supported by Python's `hashlib` module.
+- `-s SOURCE` or `--source SOURCE`: (Required) Path to the source directory.
+- `-d DESTINATION` or `--destination DESTINATION`: (Optional) Path to the destination directory. If not provided, the tool only generates checksums without checking any files.
+- `-f FILTER` or `--filter FILTER`: (Optional) File name filter. By default, all files are processed. Checksum files are always excluded.
+- `-e EXTENSION` or `--extension EXTENSION`: (Optional) Extension for the checksum files. By default, the extension is "checksum".
+- `-a ALGORITHM` or `--algorithm ALGORITHM`: (Optional) Checksum algorithm. By default, the MD5 algorithm is used. You can specify any algorithm guaranteed to be supported by Python's `hashlib` module. The list of such algorithms can be found in the [hashlib module documentation](https://docs.python.org/3/library/hashlib.html).
+- `-c` or `--force-check`: (Optional) Force checking files against checksum in the source folder if a checksum file exists for that file.
 
 To see the list of all arguments and their descriptions, run the command with the `-h` or `--help` option:
 
